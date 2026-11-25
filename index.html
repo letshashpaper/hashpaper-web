@@ -3,115 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HashPaper — Cryptographic IP Priority & BSA Section 63 Registry</title>
-  <meta name="description" content="Generate tamper-proof SHA-256 cryptographic priority certificates aligned with Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023. Zero-knowledge browser hashing." />
+  <title>HashPaper — Zero-Knowledge SHA-256 IP Priority &amp; BSA Section 63 Registry</title>
+  <meta name="description" content="Generate tamper-proof SHA-256 cryptographic priority certificates aligned with Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023. 100% browser-side zero-knowledge hashing." />
+  <meta name="keywords" content="HashPaper, SHA-256 timestamping India, BSA Section 63 certificate, intellectual property priority proof, zero knowledge hashing, OpenTimestamps India" />
+  <link rel="canonical" href="https://hashpaper.in/" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0B3D91" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="HashPaper — Cryptographic IP Priority & BSA Section 63 Registry" />
+  <meta property="og:description" content="Prove your intellectual property existed first without uploading a single word. Local SHA-256 hashing + IST & Bitcoin OpenTimestamps ledger." />
+  <meta property="og:url" content="https://hashpaper.in/" />
+  <meta property="og:image" content="https://hashpaper.in/logo.png" />
+
+  <!-- AEO / SEO Structured Data (SoftwareApplication + FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "HashPaper",
+        "applicationCategory": "LegalTechApplication",
+        "operatingSystem": "Web, Android, iOS",
+        "url": "https://hashpaper.in",
+        "description": "Zero-knowledge client-side SHA-256 cryptographic priority timestamping platform aligned with Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023.",
+        "offers": {
+          "@type": "Offer",
+          "price": "299.00",
+          "priceCurrency": "INR"
+        },
+        "provider": {
+          "@type": "Organization",
+          "name": "HashPaper (MDM Global Holdings / Your Legal Indian)",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does HashPaper ever see or store my screenplay, source code, or confidential document?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. HashPaper computes the 64-character SHA-256 cryptographic fingerprint strictly inside your browser using the Web Crypto API. Your raw text never leaves your device and is never transmitted to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does HashPaper align with Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HashPaper records deterministic UTF-8 SHA-256 hashes alongside authoritative Indian Standard Time (IST) timestamps, independent OpenTimestamps ledger anchors, and verifiable electronic metadata required for establishing electronic record integrity under BSA Section 63."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can anyone verify my HashPaper certificate without seeing my confidential text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Third parties can scan the QR code or enter your Certificate ID on HashPaper's blind public ledger to verify the exact timestamp and SHA-256 fingerprint while owner names remain masked and confidential content stays private."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <script src="/js/crypto-core.js"></script>
+  <script src="/js/pwa.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #0f172a; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
     .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    .brand-gradient { background: linear-gradient(135deg, #0B3D91 0%, #1E4FBD 60%, #2B62D6 100%); }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-[#F8FAFC] antialiased selection:bg-[#2B62D6] selection:text-white">
 
-  <!-- Top Navigation -->
-  <header class="bg-slate-950 text-white border-b border-slate-800 sticky top-0 z-40">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 font-bold text-sm font-mono-code">#</div>
-        <div>
-          <span class="font-bold tracking-tight text-lg">HashPaper</span>
-          <span class="hidden sm:inline-block ml-2 text-[11px] uppercase tracking-widest text-slate-400 border-l border-slate-700 pl-2">India IP Registry</span>
+  <!-- Crisp SaaS Header -->
+  <header class="bg-white/95 backdrop-blur border-b border-slate-200/90 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <img src="/logo.png" alt="HashPaper Logo" class="w-7 h-7 object-contain" />
+        <div class="flex items-baseline gap-2">
+          <span class="font-display font-bold tracking-tight text-[16px] text-[#0B3D91]">HashPaper</span>
+          <span class="hidden md:inline-block text-[10px] font-semibold uppercase tracking-widest text-[#2B62D6] bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded">BSA §63 Registry</span>
         </div>
       </a>
-      <nav class="flex items-center gap-4 sm:gap-6 text-sm">
-        <a href="/verify.html" class="text-slate-300 hover:text-white font-medium transition">Verify Ledger</a>
-        <a href="#mint-section" class="bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-3.5 py-1.5 rounded text-xs sm:text-sm transition">
-          Timestamp IP
-        </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-[12.5px] font-medium text-slate-600">
+        <a href="/verify.html" class="hover:text-[#0B3D91] transition">Verify Ledger</a>
+        <a href="/methodology.html" class="hover:text-[#0B3D91] transition">Methodology</a>
+        <a href="/law.html" class="hover:text-[#0B3D91] transition">BSA 2023 Law</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91] transition">Contact</a>
       </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" data-install-btn onclick="triggerHashPaperInstall()"
+          class="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#0B3D91] bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1.5 rounded-md transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-[#2B62D6]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />
+          </svg>
+          <span>Install App</span>
+        </button>
+        <a href="/verify.html" class="md:hidden text-[11.5px] font-semibold text-slate-700 border border-slate-200 px-2.5 py-1.5 rounded-md">
+          Verify
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="bg-slate-950 text-white pt-12 pb-16 px-4 sm:px-6 border-b border-slate-800">
+  <!-- Compact Executive Hero -->
+  <section class="brand-gradient text-white py-10 sm:py-12 px-4 sm:px-6 border-b border-[#0B3D91]">
     <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-xs text-sky-300 font-medium mb-6">
-        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-        Zero-Knowledge Browser Hashing • BSA Section 63 Aligned
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-[11px] font-medium text-[#5BC8E8] mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#5BC8E8]"></span>
+        100% Client-Side SHA-256 • Zero-Retention Architecture
       </div>
-      <h1 class="text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
-        Prove Your Intellectual Property Existed First—<span class="text-sky-400">Without Revealing a Single Word.</span>
+      <h1 class="text-2xl sm:text-[34px] font-bold tracking-tight leading-[1.2] max-w-2xl mx-auto">
+        Cryptographic IP Priority Proof—<span class="text-[#5BC8E8]">Without Uploading Your Work.</span>
       </h1>
-      <p class="mt-5 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-        Your screenplay, source code, lyrics, or business concept is hashed strictly inside your browser. Only the 64-character SHA-256 fingerprint is anchored to our IST &amp; OpenTimestamps ledger.
+      <p class="mt-3 text-[13px] sm:text-[14px] text-blue-100/90 max-w-xl mx-auto leading-relaxed">
+        Compute a deterministic SHA-256 fingerprint locally inside your browser and anchor it to an authoritative IST &amp; Bitcoin OpenTimestamps ledger aligned with <strong>Section 63 of the Bharatiya Sakshya Adhiniyam, 2023</strong>.
       </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-6 text-xs text-slate-400">
-        <div class="flex items-center gap-1.5">✓ 100% Client-Side SHA-256</div>
-        <div class="flex items-center gap-1.5">✓ Authoritative IST Timestamp</div>
-        <div class="flex items-center gap-1.5">✓ Bitcoin OpenTimestamps Anchor</div>
-        <div class="flex items-center gap-1.5">✓ Instant Email Certificate</div>
+      <div class="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-[11.5px] text-blue-100/80 font-medium">
+        <span>✓ Web Crypto API Local Hash</span>
+        <span>✓ Masked Public Ledger</span>
+        <span>✓ Bitcoin OpenTimestamps</span>
+        <span>✓ Instant QR Certificate</span>
       </div>
     </div>
   </section>
 
-  <!-- Main Minting Workspace -->
-  <main id="mint-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+  <!-- Main Workspace -->
+  <main id="mint-section" class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+    <div class="bg-white border border-slate-200/90 rounded-xl shadow-xs overflow-hidden">
 
-      <!-- Step Banner -->
-      <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-2">
+      <!-- Card Top Bar -->
+      <div class="bg-slate-50 border-b border-slate-200/90 px-5 py-3.5 flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h2 class="font-semibold text-base">Generate Cryptographic Priority Certificate</h2>
-          <p class="text-xs text-slate-400">Your raw text never leaves this device. Save your downloaded .txt reference file safely.</p>
+          <h2 class="font-semibold text-[14px] text-slate-900">Mint Priority Timestamp Certificate</h2>
+          <p class="text-[11.5px] text-slate-500">Raw text stays strictly on your device. Only the 64-character hex digest is transmitted.</p>
         </div>
-        <span class="text-xs font-mono-code bg-slate-800 border border-slate-700 px-2.5 py-1 rounded text-sky-300">
-          FEE: ₹1 (LAUNCH TEST)
+        <span class="text-[11px] font-mono-code font-semibold bg-blue-50 border border-blue-200 text-[#0B3D91] px-2.5 py-1 rounded">
+          FEE: ₹1 (TEST) • STD ₹299
         </span>
       </div>
 
-      <form id="mint-form" class="p-6 sm:p-8 space-y-6">
+      <form id="mint-form" class="p-5 sm:p-7 space-y-5">
 
-        <!-- Declarant Details -->
+        <!-- Declarant Inputs -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label for="owner_full_name" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+            <label for="owner_full_name" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-600 mb-1">
               Legal Full Name (Declarant) *
             </label>
             <input type="text" id="owner_full_name" required placeholder="e.g., M D Nesa Kumar"
-              class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
-            <p class="text-[11px] text-slate-400 mt-1">Masked as initials on public ledger; shown in full on your private certificate.</p>
+              class="w-full px-3 py-2 text-[13px] border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2B62D6]/30 focus:border-[#2B62D6]" />
+            <p class="text-[11px] text-slate-400 mt-1">Shown in full on your private certificate; masked as initials on public ledger.</p>
           </div>
 
           <div>
-            <label for="owner_email" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+            <label for="owner_email" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-600 mb-1">
               Certificate Delivery Email *
             </label>
             <input type="email" id="owner_email" required placeholder="you@domain.com"
-              class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
-            <p class="text-[11px] text-slate-400 mt-1">Your BSA Section 63 Certificate &amp; QR link will be emailed here.</p>
+              class="w-full px-3 py-2 text-[13px] border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2B62D6]/30 focus:border-[#2B62D6]" />
+            <p class="text-[11px] text-slate-400 mt-1">BSA Section 63 certificate &amp; verification QR code are dispatched here.</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div class="sm:col-span-2">
-            <label for="asset_title" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+            <label for="asset_title" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-600 mb-1">
               Work / Asset Title *
             </label>
-            <input type="text" id="asset_title" required placeholder="e.g., Project Garuda — Feature Film Screenplay Draft 1"
-              class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500" />
+            <input type="text" id="asset_title" required placeholder="e.g., Project Garuda — Screenplay Draft 1"
+              class="w-full px-3 py-2 text-[13px] border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2B62D6]/30 focus:border-[#2B62D6]" />
           </div>
 
           <div>
-            <label for="asset_category" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5">
+            <label for="asset_category" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-600 mb-1">
               Classification
             </label>
             <select id="asset_category"
-              class="w-full px-3.5 py-2.5 text-sm border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+              class="w-full px-3 py-2 text-[13px] border border-slate-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#2B62D6]/30 focus:border-[#2B62D6]">
               <option value="Screenplay / Script">Screenplay / Script</option>
               <option value="Source Code / Algorithm">Source Code / Algorithm</option>
               <option value="Literary / Manuscript">Literary / Manuscript</option>
@@ -123,68 +215,66 @@
           </div>
         </div>
 
-        <!-- Zero-Knowledge Payload Box -->
+        <!-- Zero-Knowledge Payload -->
         <div>
-          <div class="flex items-center justify-between mb-1.5">
-            <label for="ip_payload" class="block text-xs font-semibold uppercase tracking-wider text-slate-600">
-              Intellectual Property Text (Hashed Locally in Your Browser) *
+          <div class="flex items-center justify-between mb-1">
+            <label for="ip_payload" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-600">
+              Confidential Intellectual Property Text (Hashed On-Device) *
             </label>
-            <span id="byte-counter" class="text-xs font-mono-code text-slate-500">0 bytes UTF-8</span>
+            <span id="byte-counter" class="text-[11px] font-mono-code text-slate-500">0 bytes UTF-8</span>
           </div>
-          <textarea id="ip_payload" rows="7" required
-            placeholder="Paste your screenplay, source code, lyrics, business pitch, or confidential text here. Nothing typed here is ever transmitted over the internet..."
-            class="w-full p-3.5 text-sm font-mono-code border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 bg-slate-50/50"></textarea>
+          <textarea id="ip_payload" rows="6" required
+            placeholder="Paste your screenplay, source code, lyrics, or business concept here. Nothing typed here ever leaves your browser..."
+            class="w-full p-3 text-[12.5px] font-mono-code border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2B62D6]/30 focus:border-[#2B62D6] bg-slate-50/50 leading-relaxed"></textarea>
         </div>
 
-        <!-- Live SHA-256 Preview Box -->
-        <div class="bg-slate-900 rounded-lg p-4 border border-slate-800">
+        <!-- Live Hash Box -->
+        <div class="bg-[#082459] rounded-lg p-3.5 border border-[#0B3D91]">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Live Local SHA-256 Fingerprint</span>
-            <span class="text-[11px] text-emerald-400 font-medium">● Computed On-Device</span>
+            <span class="text-[10.5px] font-semibold uppercase tracking-wider text-blue-200/80">Local SHA-256 Digest (Web Crypto API)</span>
+            <span class="text-[10.5px] text-[#5BC8E8] font-medium">● Zero-Network Computation</span>
           </div>
-          <div id="live-hash-display" class="mt-2 font-mono-code text-xs sm:text-sm text-sky-400 break-all select-all">
-            Start typing or pasting text above to generate SHA-256 fingerprint...
+          <div id="live-hash-display" class="mt-1.5 font-mono-code text-[11.5px] sm:text-[12.5px] text-white break-all select-all">
+            Awaiting input to compute SHA-256 fingerprint...
           </div>
         </div>
 
-        <!-- Legal Acknowledgment -->
-        <div class="flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-lg p-3.5 text-xs text-amber-900">
-          <input type="checkbox" id="legal_ack" required class="mt-0.5 rounded border-amber-400 text-slate-900 focus:ring-slate-900" />
+        <!-- Acknowledgment -->
+        <div class="flex items-start gap-2.5 bg-blue-50/70 border border-blue-200/80 rounded-lg p-3 text-[11.5px] text-slate-700">
+          <input type="checkbox" id="legal_ack" required class="mt-0.5 rounded border-slate-400 text-[#0B3D91] focus:ring-[#2B62D6]" />
           <label for="legal_ack" class="leading-relaxed">
-            I understand that HashPaper operates a strict <strong>zero-retention</strong> ledger and does not store my raw text. Upon payment, my browser will automatically download an unaltered UTF-8 <code>.txt</code> reference file—I must preserve this exact file to prove match against this SHA-256 hash.
+            I acknowledge HashPaper's <strong>zero-retention</strong> architecture: my raw text is never stored on HashPaper servers. Upon payment, my browser will download an unaltered UTF-8 <code>.txt</code> reference file which I must preserve intact for future cryptographic verification.
           </label>
         </div>
 
-        <!-- Error Alert -->
-        <div id="error-box" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs rounded-lg p-3.5"></div>
+        <div id="error-box" class="hidden bg-red-50 border border-red-200 text-red-700 text-[12px] rounded-lg p-3"></div>
 
-        <!-- Submit Button -->
         <button type="submit" id="submit-btn"
-          class="w-full bg-slate-950 hover:bg-slate-800 text-white font-semibold py-3.5 px-6 rounded-lg text-sm transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+          class="w-full bg-[#0B3D91] hover:bg-[#164DB0] text-white font-semibold py-3 px-5 rounded-lg text-[13px] transition flex items-center justify-center gap-2 shadow-xs cursor-pointer">
           <span>Anchor Hash &amp; Mint Certificate (₹1)</span>
         </button>
       </form>
 
-      <!-- Success Receipt Panel (Shown Immediately After Payment) -->
-      <div id="success-panel" class="hidden p-6 sm:p-8 bg-emerald-50/60 border-t border-emerald-200 space-y-5">
+      <!-- Success Receipt Panel -->
+      <div id="success-panel" class="hidden p-5 sm:p-7 bg-emerald-50/50 border-t border-emerald-200 space-y-4">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">✓</div>
+          <div class="w-9 h-9 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">✓</div>
           <div>
-            <h3 class="font-bold text-lg text-slate-900">Cryptographic Priority Certificate Minted</h3>
-            <p class="text-xs text-slate-600">Your reference <code>.txt</code> file has been downloaded and your BSA Section 63 certificate has been emailed.</p>
+            <h3 class="font-bold text-[15px] text-slate-900">Cryptographic Priority Certificate Minted</h3>
+            <p class="text-[11.5px] text-slate-600">Your reference <code>.txt</code> file has been downloaded and your BSA §63 certificate was emailed.</p>
           </div>
         </div>
 
-        <div class="bg-white border border-emerald-200 rounded-lg p-4 space-y-2.5 text-xs">
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+        <div class="bg-white border border-emerald-200 rounded-lg p-4 space-y-2 text-[12px]">
+          <div class="flex justify-between border-b border-slate-100 pb-1.5">
             <span class="text-slate-500">Certificate ID</span>
-            <span id="res-cert-id" class="font-mono-code font-bold text-slate-900"></span>
+            <span id="res-cert-id" class="font-mono-code font-bold text-[#0B3D91]"></span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b border-slate-100 pb-1.5">
             <span class="text-slate-500">IST Timestamp</span>
             <span id="res-timestamp" class="font-semibold text-slate-900"></span>
           </div>
-          <div class="flex justify-between border-b border-slate-100 pb-2">
+          <div class="flex justify-between border-b border-slate-100 pb-1.5">
             <span class="text-slate-500">OpenTimestamps Ledger</span>
             <span id="res-ots" class="font-semibold text-emerald-700"></span>
           </div>
@@ -194,30 +284,98 @@
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-3">
+        <div class="flex flex-wrap gap-2.5">
           <button type="button" id="redownload-btn"
-            class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition">
-            Download .TXT Reference File Again
+            class="bg-[#0B3D91] hover:bg-[#164DB0] text-white text-[12px] font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+            Download .TXT Reference Again
           </button>
           <a id="verify-link-btn" href="/verify.html"
-            class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 text-xs font-semibold px-4 py-2.5 rounded-lg transition">
-            View on Public Verification Ledger →
+            class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 text-[12px] font-semibold px-4 py-2 rounded-lg transition">
+            Verify on Public Ledger →
           </a>
         </div>
       </div>
-
     </div>
+
+    <!-- AEO / Technical & Legal Summary Cards -->
+    <section class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#2B62D6]">01 • Zero-Knowledge</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900 mt-1">Client-Side SHA-256 Engine</h3>
+        <p class="text-[12px] text-slate-600 mt-1.5 leading-relaxed">
+          Normalized UTF-8 bytes are hashed strictly in browser memory. Zero IP exposure to third-party servers.
+        </p>
+        <a href="/methodology.html" class="inline-block mt-2.5 text-[11.5px] font-semibold text-[#0B3D91] hover:underline">Read Methodology →</a>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#2B62D6]">02 • Evidentiary Standard</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900 mt-1">BSA Section 63 Alignment</h3>
+        <p class="text-[12px] text-slate-600 mt-1.5 leading-relaxed">
+          Structured to support electronic record integrity and deterministic hash verification under Bharatiya Sakshya Adhiniyam, 2023.
+        </p>
+        <a href="/law.html" class="inline-block mt-2.5 text-[11.5px] font-semibold text-[#0B3D91] hover:underline">Explore BSA §63 Guide →</a>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#2B62D6]">03 • Dual Anchoring</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900 mt-1">IST + Bitcoin OpenTimestamps</h3>
+        <p class="text-[12px] text-slate-600 mt-1.5 leading-relaxed">
+          Every fingerprint is stamped in Indian Standard Time and anchored to public OpenTimestamps calendar servers.
+        </p>
+        <a href="/verify.html" class="inline-block mt-2.5 text-[11.5px] font-semibold text-[#0B3D91] hover:underline">Open Public Ledger →</a>
+      </div>
+    </section>
+
+    <!-- Visible AEO FAQ Section -->
+    <section class="mt-8 bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6">
+      <h2 class="font-bold text-[15px] text-slate-900 mb-3">Frequently Asked Questions</h2>
+      <div class="divide-y divide-slate-100 text-[12.5px]">
+        <details class="py-2.5 group" open>
+          <summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+            <span>Does HashPaper ever see or store my confidential work?</span>
+            <span class="text-[#2B62D6] text-xs">+</span>
+          </summary>
+          <p class="text-slate-600 mt-1.5 leading-relaxed">
+            No. Your text is converted into a 64-character SHA-256 hexadecimal hash inside your browser using the Web Crypto API before any network request occurs. HashPaper only receives and timestamps the hash.
+          </p>
+        </details>
+        <details class="py-2.5 group">
+          <summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+            <span>Why must I keep the downloaded .txt reference file unaltered?</span>
+            <span class="text-[#2B62D6] text-xs">+</span>
+          </summary>
+          <p class="text-slate-600 mt-1.5 leading-relaxed">
+            SHA-256 is an avalanche cryptographic function—changing even a single space, comma, or line break produces a completely different 64-character hash. Keeping your exact downloaded UTF-8 <code>.txt</code> file guarantees 100% reproducible verification anywhere in the world.
+          </p>
+        </details>
+        <details class="py-2.5 group">
+          <summary class="font-semibold text-slate-800 cursor-pointer list-none flex justify-between items-center">
+            <span>Is a HashPaper timestamp a replacement for Copyright or Patent registration?</span>
+            <span class="text-[#2B62D6] text-xs">+</span>
+          </summary>
+          <p class="text-slate-600 mt-1.5 leading-relaxed">
+            No. HashPaper provides verifiable cryptographic proof of prior possession and timestamped existence to strengthen evidentiary records under BSA Section 63, complementing formal statutory registrations under the Copyright Act, 1957 or Patents Act, 1970.
+          </p>
+        </details>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white py-8 px-4 sm:px-6 text-xs text-slate-500">
+  <!-- Crisp SaaS Footer -->
+  <footer class="border-t border-slate-200 bg-white py-7 px-4 sm:px-6 text-[11.5px] text-slate-500">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <strong class="text-slate-800">HashPaper</strong> • A <span class="text-slate-700 font-medium">Your Legal Indian</span> / MDM Global Holdings Initiative, Bengaluru.
+      <div class="flex items-center gap-2">
+        <img src="/logo.png" alt="HashPaper" class="w-4 h-4 object-contain" />
+        <span><strong class="text-slate-800">HashPaper</strong> • A <span class="text-slate-700 font-medium">Your Legal Indian</span> / MDM Global Holdings Initiative, Bengaluru.</span>
       </div>
-      <div class="flex items-center gap-5">
-        <a href="/verify.html" class="hover:text-slate-900">Public Ledger Verification</a>
-        <span>Zero-Retention Architecture</span>
+      <div class="flex flex-wrap items-center gap-4 font-medium text-slate-600">
+        <a href="/verify.html" class="hover:text-[#0B3D91]">Verify Ledger</a>
+        <a href="/methodology.html" class="hover:text-[#0B3D91]">Methodology</a>
+        <a href="/law.html" class="hover:text-[#0B3D91]">BSA §63 Law</a>
+        <a href="/terms.html" class="hover:text-[#0B3D91]">Terms</a>
+        <a href="/privacy.html" class="hover:text-[#0B3D91]">Privacy</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91]">Contact</a>
       </div>
     </div>
   </footer>
@@ -232,12 +390,11 @@
     const errorBox = document.getElementById('error-box');
     const submitBtn = document.getElementById('submit-btn');
 
-    // Compute live SHA-256 locally on every keystroke/paste
     payloadInput.addEventListener('input', async () => {
       const text = payloadInput.value;
       if (!text) {
         currentHashState = null;
-        hashDisplay.textContent = 'Start typing or pasting text above to generate SHA-256 fingerprint...';
+        hashDisplay.textContent = 'Awaiting input to compute SHA-256 fingerprint...';
         byteCounter.textContent = '0 bytes UTF-8';
         return;
       }
@@ -274,7 +431,6 @@
       submitBtn.textContent = 'Initializing Secure Order...';
 
       try {
-        // 1. Create Razorpay Order via Cloudflare Function
         const orderRes = await fetch('/api/create-order', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -290,7 +446,6 @@
           throw new Error(orderData.error || 'Could not create payment order.');
         }
 
-        // 2. Open Razorpay Checkout Modal
         const options = {
           key: orderData.key_id,
           amount: orderData.amount,
@@ -298,11 +453,8 @@
           name: 'HashPaper India',
           description: `Cryptographic Priority Certificate (${assetCategory})`,
           order_id: orderData.order_id,
-          prefill: {
-            name: ownerFullName,
-            email: ownerEmail
-          },
-          theme: { color: '#0f172a' },
+          prefill: { name: ownerFullName, email: ownerEmail },
+          theme: { color: '#0B3D91' },
           handler: async function (response) {
             submitBtn.textContent = 'Verifying Payment & Minting Certificate...';
             try {
@@ -328,13 +480,11 @@
                 throw new Error(verifyData.error || 'Certificate verification failed.');
               }
 
-              // Automatically download exact UTF-8 reference .txt file
               window.HashPaperCrypto.downloadReferenceFile(
                 currentHashState.bytes,
                 currentHashState.hash
               );
 
-              // Populate & show success receipt
               const cert = verifyData.certificate;
               document.getElementById('res-cert-id').textContent = cert.certificate_code;
               document.getElementById('res-timestamp').textContent = cert.ist_timestamp;
@@ -369,7 +519,6 @@
 
         const rzp = new Razorpay(options);
         rzp.open();
-
       } catch (err) {
         showError(err.message);
         submitBtn.disabled = false;
