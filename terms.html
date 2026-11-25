@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service &amp; Refund Policy — HashPaper India</title>
+  <meta name="description" content="Terms of Service, zero-retention cryptographic disclaimer, and refund policy for HashPaper (Your Legal Indian / MDM Global Holdings, Bengaluru)." />
+  <link rel="canonical" href="https://hashpaper.in/terms.html" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0B3D91" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/pwa.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #0f172a; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] antialiased min-h-screen flex flex-col selection:bg-[#2B62D6] selection:text-white">
+
+  <!-- Crisp SaaS Header -->
+  <header class="bg-white/95 backdrop-blur border-b border-slate-200/90 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <img src="/logo.png" alt="HashPaper Logo" width="28" height="28" class="w-7 h-7 object-contain" />
+        <div class="flex items-baseline gap-2">
+          <span class="font-display font-bold tracking-tight text-[16px] text-[#0B3D91]">HashPaper</span>
+          <span class="hidden md:inline-block text-[10px] font-semibold uppercase tracking-widest text-[#2B62D6] bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded">BSA §63 Registry</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-[12.5px] font-medium text-slate-600">
+        <a href="/" class="hover:text-[#0B3D91] transition">Timestamp IP</a>
+        <a href="/verify.html" class="hover:text-[#0B3D91] transition">Verify Ledger</a>
+        <a href="/methodology.html" class="hover:text-[#0B3D91] transition">Methodology</a>
+        <a href="/law.html" class="hover:text-[#0B3D91] transition">BSA 2023 Law</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91] transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" data-install-btn onclick="triggerHashPaperInstall()"
+          class="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#0B3D91] bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1.5 rounded-md transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-[#2B62D6]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />
+          </svg>
+          <span>Install App</span>
+        </button>
+        <a href="/" class="md:hidden text-[11.5px] font-semibold text-white bg-[#0B3D91] px-2.5 py-1.5 rounded-md">+ Mint</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 sm:px-6 py-9 sm:py-12">
+    <div class="bg-white border border-slate-200/90 rounded-xl p-6 sm:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <div class="text-[11px] font-mono-code font-semibold text-[#2B62D6]">EFFECTIVE DATE: 25 NOVEMBER 2026</div>
+        <h1 class="text-xl sm:text-[25px] font-bold tracking-tight text-slate-900 mt-1">Terms of Service &amp; Refund Policy</h1>
+        <p class="text-[12.5px] text-slate-500 mt-1">Operated by HashPaper (A Your Legal Indian / MDM Global Holdings Initiative, Bengaluru, India).</p>
+      </div>
+
+      <section class="space-y-2 text-[13px] text-slate-600 leading-relaxed">
+        <h2 class="font-bold text-[14.5px] text-slate-900">1. Scope of Service</h2>
+        <p>
+          HashPaper provides a browser-based cryptographic timestamping utility that computes a deterministic SHA-256 hash of user-supplied text on the client device and records that 64-character hexadecimal digest alongside an authoritative Indian Standard Time (IST) timestamp and an OpenTimestamps ledger anchor.
+        </p>
+      </section>
+
+      <section class="space-y-2 text-[13px] text-slate-600 leading-relaxed">
+        <h2 class="font-bold text-[14.5px] text-slate-900">2. Zero-Retention &amp; User Custody Responsibility</h2>
+        <p>
+          Because HashPaper operates a strict zero-retention architecture, <strong>HashPaper never receives, stores, or can recover your original text or file</strong>. Upon certificate minting, your browser automatically downloads an unaltered UTF-8 <code>.txt</code> reference file. You are solely responsible for backing up and preserving that exact file unaltered; modifying even a single character or space will prevent future SHA-256 match verification.
+        </p>
+      </section>
+
+      <section class="space-y-2 text-[13px] text-slate-600 leading-relaxed">
+        <h2 class="font-bold text-[14.5px] text-slate-900">3. No Statutory IP Grant or Legal Representation</h2>
+        <p>
+          Minting a HashPaper Priority Certificate establishes cryptographic evidence of existence and possession aligned with electronic record principles under Section 63 of the Bhar
