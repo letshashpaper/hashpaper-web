@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BSA Section 63 &amp; Electronic Evidence Law — HashPaper India Legal Framework</title>
+  <meta name="description" content="Understand how Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023 governs electronic records, SHA-256 hash values, and intellectual property priority evidence in India." />
+  <link rel="canonical" href="https://hashpaper.in/law.html" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0B3D91" />
+
+  <!-- AEO / SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023 & SHA-256 Priority Evidence",
+        "description": "Legal framework explaining electronic record admissibility under BSA Section 63, Part A and Part B certification mechanics, and cryptographic hash integrity in Indian courts.",
+        "author": {
+          "@type": "Organization",
+          "name": "HashPaper (Your Legal Indian / MDM Global Holdings)"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "HashPaper",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://hashpaper.in/logo.png"
+          }
+        },
+        "mainEntityOfPage": "https://hashpaper.in/law.html"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Section 63 of the Bharatiya Sakshya Adhiniyam, 2023 (which succeeded Section 65B of the Indian Evidence Act, 1872) governs the admissibility of electronic records in Indian legal proceedings and explicitly recognizes hash values as verifiable identifiers of electronic output integrity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does a HashPaper certificate replace statutory Copyright or Patent registration in India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. HashPaper creates a tamper-evident cryptographic timestamp proving prior existence and possession of an electronic work. It complements, rather than replaces, statutory registration under the Copyright Act, 1957 or Patents Act, 1970."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/pwa.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #0f172a; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] antialiased min-h-screen flex flex-col selection:bg-[#2B62D6] selection:text-white">
+
+  <!-- Crisp SaaS Header -->
+  <header class="bg-white/95 backdrop-blur border-b border-slate-200/90 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <img src="/logo.png" alt="HashPaper Logo" width="28" height="28" class="w-7 h-7 object-contain" />
+        <div class="flex items-baseline gap-2">
+          <span class="font-display font-bold tracking-tight text-[16px] text-[#0B3D91]">HashPaper</span>
+          <span class="hidden md:inline-block text-[10px] font-semibold uppercase tracking-widest text-[#2B62D6] bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded">BSA §63 Registry</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-[12.5px] font-medium text-slate-600">
+        <a href="/" class="hover:text-[#0B3D91] transition">Timestamp IP</a>
+        <a href="/verify.html" class="hover:text-[#0B3D91] transition">Verify Ledger</a>
+        <a href="/methodology.html" class="hover:text-[#0B3D91] transition">Methodology</a>
+        <a href="/law.html" class="text-[#0B3D91] font-semibold">BSA 2023 Law</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91] transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" data-install-btn onclick="triggerHashPaperInstall()"
+          class="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#0B3D91] bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1.5 rounded-md transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-[#2B62D6]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />
+          </svg>
+          <span>Install App</span>
+        </button>
+        <a href="/" class="md:hidden text-[11.5px] font-semibold text-white bg-[#0B3D91] px-2.5 py-1.5 rounded-md">+ Mint</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Legal Content -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-9 sm:py-12 space-y-8">
+
+    <div class="border-b border-slate-200 pb-6">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[11px] text-[#0B3D91] font-semibold mb-2.5">
+        Indian Statutory Evidence Framework • Effective 1 July 2024
+      </div>
+      <h1 class="text-2xl sm:text-[28px] font-bold tracking-tight text-slate-900">Bharatiya Sakshya Adhiniyam (BSA), 2023 &amp; Cryptographic Priority</h1>
+      <p class="mt-2 text-[13.5px] text-slate-600 leading-relaxed max-w-2xl">
+        How Indian evidentiary law treats digital records, cryptographic SHA-256 hash values, and independent timestamping in intellectual property, commercial, and authorship disputes.
+      </p>
+    </div>
+
+    <!-- Section 1: BSA Section 63 -->
+    <section class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-3">
+      <div class="text-[11px] font-mono-code font-bold text-[#2B62D6]">STATUTORY PROVISION • SECTION 63, BSA 2023</div>
+      <h2 class="font-bold text-[16px] text-slate-900">Admissibility of Electronic Records &amp; Hash Value Recognition</h2>
+      <p class="text-[13px] text-slate-600 leading-relaxed">
+        Effective July 1, 2024, the <strong>Bharatiya Sakshya Adhiniyam (BSA), 2023</strong> replaced the Indian Evidence Act, 1872. Under <strong>Section 63 of the BSA</strong> (the successor to Section 65B), electronic outputs—such as digital manuscripts, source code repositories, scripts, and cryptographic certificates—are admissible in judicial proceedings when accompanied by a statutory certificate verifying device integrity and output accuracy.
+      </p>
+      <p class="text-[13px] text-slate-600 leading-relaxed">
+        Crucially, the Schedule to Section 63 explicitly incorporates the <strong>Hash Value</strong> (such as SHA-256) as a primary technical identifier to prove that an electronic file presented before a court is bit-for-bit identical to the original electronic record created at an earlier date.
+      </p>
+    </section>
+
+    <!-- Section 2: Evidentiary Pillars -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4 space-y-1.5">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#0B3D91]">Pillar 01 • Non-Repudiation</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900">Tamper-Evident Integrity</h3>
+        <p class="text-[12px] text-slate-600 leading-relaxed">
+          If an opposing party alters even a single character or timestamp inside a disputed script or contract, its SHA-256 digest changes completely—immediately exposing post-facto fabrication.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4 space-y-1.5">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#0B3D91]">Pillar 02 • Prior Existence</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900">Anti-Backdating Proof</h3>
+        <p class="text-[12px] text-slate-600 leading-relaxed">
+          Anchoring the SHA-256 hash to both an IST database record and an independent OpenTimestamps Bitcoin ledger proves the exact work existed on or before the recorded timestamp.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-4 space-y-1.5">
+        <div class="text-[11px] font-bold uppercase tracking-wider text-[#0B3D91]">Pillar 03 • Trade Secret Safety</div>
+        <h3 class="font-semibold text-[13.5px] text-slate-900">Confidentiality Before Filing</h3>
+        <p class="text-[12px] text-slate-600 leading-relaxed">
+          Creators pitching scripts to studios or sharing code with investors can establish priority before disclosure without exposing unpublished trade secrets on public registries.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Legal Scope & Disclaimer -->
+    <section class="bg-amber-50/70 border border-amber-200 rounded-xl p-5 sm:p-6 space-y-2.5">
+      <h2 class="font-bold text-[14.5px] text-amber-950">Statutory Boundary &amp; Legal Disclaimer</h2>
+      <ul class="list-disc pl-5 space-y-1.5 text-[12.5px] text-amber-900 leading-relaxed">
+        <li><strong>Complementary Evidentiary Tool:</strong> A HashPaper Priority Certificate establishes cryptographic proof of possession and timestamped existence. It does not constitute a statutory grant of monopoly under the <em>Copyright Act, 1957</em>, the <em>Patents Act, 1970</em>, or the <em>Trade Marks Act, 1999</em>.</li>
+        <li><strong>Courtroom Submission:</strong> When tendering electronic evidence in Indian courts, parties should attach the unaltered UTF-8 <code>.txt</code> reference file, the HashPaper Certificate ID record, and a formal Section 63(4) certificate signed by the person in lawful control of the device used to generate and store the reference file.</li>
+        <li><strong>No Legal Advice:</strong> Information on this portal is provided for technical and informational clarity and does not establish an advocate-client relationship.</li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <div class="bg-white border border-slate-200/90 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="font-bold text-[14px] text-slate-900">Establish Your Cryptographic Priority Record</h3>
+        <p class="text-[12px] text-slate-600 mt-0.5">Generate your SHA-256 fingerprint locally and receive a QR-verifiable certificate.</p>
+      </div>
+      <a href="/" class="shrink-0 bg-[#0B3D91] hover:bg-[#164DB0] text-white text-[12.5px] font-semibold px-4 py-2.5 rounded-lg transition">
+        Mint Priority Certificate →
+      </a>
+    </div>
+  </main>
+
+  <!-- Crisp SaaS Footer -->
+  <footer class="border-t border-slate-200 bg-white py-7 px-4 sm:px-6 text-[11.5px] text-slate-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <img src="/logo.png" alt="HashPaper" width="16" height="16" class="w-4 h-4 object-contain" />
+        <span><strong class="text-slate-800">HashPaper</strong> • A <span class="text-slate-700 font-medium">Your Legal Indian</span> / MDM Global Holdings Initiative, Bengaluru.</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 font-medium text-slate-600">
+        <a href="/" class="hover:text-[#0B3D91]">Timestamp IP</a>
+        <a href="/verify.html" class="hover:text-[#0B3D91]">Verify Ledger</a>
+        <a href="/methodology.html" class="hover:text-[#0B3D91]">Methodology</a>
+        <a href="/terms.html" class="hover:text-[#0B3D91]">Terms</a>
+        <a href="/privacy.html" class="hover:text-[#0B3D91]">Privacy</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91]">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
