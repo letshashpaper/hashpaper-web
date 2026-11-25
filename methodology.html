@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptographic Methodology — How HashPaper Zero-Knowledge SHA-256 Works</title>
+  <meta name="description" content="Technical breakdown of HashPaper's client-side UTF-8 normalization, Web Crypto SHA-256 hashing, Mumbai database anchoring, and OpenTimestamps Bitcoin ledger proof." />
+  <link rel="canonical" href="https://hashpaper.in/methodology.html" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0B3D91" />
+
+  <!-- AEO / SEO Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HashPaper Zero-Knowledge Cryptographic Timestamping Methodology",
+    "description": "How browser-side SHA-256 hashing, UTF-8 byte parity, IST server anchoring, and OpenTimestamps establish tamper-evident intellectual property priority.",
+    "author": {
+      "@type": "Organization",
+      "name": "HashPaper (MDM Global Holdings / Your Legal Indian)"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HashPaper",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hashpaper.in/logo.png"
+      }
+    },
+    "mainEntityOfPage": "https://hashpaper.in/methodology.html"
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/js/pwa.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13.5px; color: #0f172a; }
+    h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-[#F8FAFC] antialiased min-h-screen flex flex-col selection:bg-[#2B62D6] selection:text-white">
+
+  <!-- Crisp SaaS Header -->
+  <header class="bg-white/95 backdrop-blur border-b border-slate-200/90 sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-2.5 shrink-0">
+        <img src="/logo.png" alt="HashPaper Logo" width="28" height="28" class="w-7 h-7 object-contain" />
+        <div class="flex items-baseline gap-2">
+          <span class="font-display font-bold tracking-tight text-[16px] text-[#0B3D91]">HashPaper</span>
+          <span class="hidden md:inline-block text-[10px] font-semibold uppercase tracking-widest text-[#2B62D6] bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded">BSA §63 Registry</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-[12.5px] font-medium text-slate-600">
+        <a href="/" class="hover:text-[#0B3D91] transition">Timestamp IP</a>
+        <a href="/verify.html" class="hover:text-[#0B3D91] transition">Verify Ledger</a>
+        <a href="/methodology.html" class="text-[#0B3D91] font-semibold">Methodology</a>
+        <a href="/law.html" class="hover:text-[#0B3D91] transition">BSA 2023 Law</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91] transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button type="button" data-install-btn onclick="triggerHashPaperInstall()"
+          class="inline-flex items-center gap-1.5 text-[11.5px] font-semibold text-[#0B3D91] bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2.5 py-1.5 rounded-md transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-[#2B62D6]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3" />
+          </svg>
+          <span>Install App</span>
+        </button>
+        <a href="/" class="md:hidden text-[11.5px] font-semibold text-white bg-[#0B3D91] px-2.5 py-1.5 rounded-md">+ Mint</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-9 sm:py-12 space-y-8">
+
+    <div class="border-b border-slate-200 pb-6">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-[11px] text-[#0B3D91] font-semibold mb-2.5">
+        Technical Architecture &amp; Cryptographic Specification
+      </div>
+      <h1 class="text-2xl sm:text-[28px] font-bold tracking-tight text-slate-900">Zero-Knowledge Timestamping Methodology</h1>
+      <p class="mt-2 text-[13.5px] text-slate-600 leading-relaxed max-w-2xl">
+        HashPaper separates <strong>proof of existence</strong> from <strong>content disclosure</strong>. By computing SHA-256 digests strictly inside the creator's browser before any network transmission, intellectual property remains confidential while gaining verifiable priority.
+      </p>
+    </div>
+
+    <!-- 4-Step Pipeline -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-white border border-slate-200/90 rounded-xl p-5 space-y-2">
+        <div class="text-[11px] font-mono-code font-bold text-[#2B62D6]">STAGE 01 • CANONICALIZATION</div>
+        <h2 class="font-bold text-[15px] text-slate-900">Deterministic UTF-8 Byte Encoding</h2>
+        <p class="text-[12.5px] text-slate-600 leading-relaxed">
+          Operating systems encode line endings differently (<code>\r\n</code> on Windows vs. <code>\n</code> on macOS/Linux). HashPaper standardizes line endings to LF (<code>\n</code>) and encodes text into raw UTF-8 bytes so the resulting digest is identical across every device and OS.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-5 space-y-2">
+        <div class="text-[11px] font-mono-code font-bold text-[#2B62D6]">STAGE 02 • LOCAL DIGEST</div>
+        <h2 class="font-bold text-[15px] text-slate-900">Web Crypto API SHA-256 Execution</h2>
+        <p class="text-[12.5px] text-slate-600 leading-relaxed">
+          Using the native browser <code>window.crypto.subtle.digest('SHA-256')</code> engine, your normalized byte buffer is reduced into a 256-bit (64-character hexadecimal) cryptographic fingerprint. The raw text never traverses the network.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-5 space-y-2">
+        <div class="text-[11px] font-mono-code font-bold text-[#2B62D6]">STAGE 03 • DUAL ANCHORING</div>
+        <h2 class="font-bold text-[15px] text-slate-900">IST Database + OpenTimestamps Ledger</h2>
+        <p class="text-[12.5px] text-slate-600 leading-relaxed">
+          Upon payment verification, Cloudflare Edge Functions commit the 64-character digest to our Mumbai (<code>ap-south-1</code>) PostgreSQL ledger with an authoritative IST timestamp and simultaneously submit the raw 32-byte digest to public OpenTimestamps calendar servers.
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200/90 rounded-xl p-5 space-y-2">
+        <div class="text-[11px] font-mono-code font-bold text-[#2B62D6]">STAGE 04 • PARITY ARTIFACT</div>
+        <h2 class="font-bold text-[15px] text-slate-900">Unaltered Reference File &amp; Blind Ledger</h2>
+        <p class="text-[12.5px] text-slate-600 leading-relaxed">
+          Your browser downloads the exact hashed byte stream as <code>HashPaper_Ref_XXXX.txt</code>, while a database trigger mirrors only the Certificate ID, hash, masked initials, and timestamp to the public verification ledger.
+        </p>
+      </div>
+    </section>
+
+    <!-- Independent Verification Table -->
+    <section class="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 space-y-3">
+      <h2 class="font-bold text-[15px] text-slate-900">Independent Command-Line Parity Verification</h2>
+      <p class="text-[12.5px] text-slate-600 leading-relaxed">
+        Because HashPaper hashes pure UTF-8 bytes without proprietary wrappers or hidden salts, any forensic examiner or court expert can independently recompute the exact same SHA-256 hash from your downloaded <code>.txt</code> file using standard OS utilities:
+      </p>
+      <div class="bg-[#082459] text-white rounded-lg p-4 font-mono-code text-[11.5px] space-y-2 overflow-x-auto">
+        <div><span class="text-[#5BC8E8]"># Windows PowerShell:</span> Get-FileHash .\HashPaper_Ref_XXXXXXXXXXXX.txt -Algorithm SHA256</div>
+        <div><span class="text-[#5BC8E8]"># macOS Terminal:</span> shasum -a 256 HashPaper_Ref_XXXXXXXXXXXX.txt</div>
+        <div><span class="text-[#5BC8E8]"># Linux Terminal:</span> sha256sum HashPaper_Ref_XXXXXXXXXXXX.txt</div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="font-bold text-[14px] text-[#0B3D91]">Ready to generate a zero-knowledge timestamp?</h3>
+        <p class="text-[12px] text-slate-600 mt-0.5">Compute your SHA-256 fingerprint locally and mint a BSA §63 certificate in under 30 seconds.</p>
+      </div>
+      <a href="/" class="shrink-0 bg-[#0B3D91] hover:bg-[#164DB0] text-white text-[12.5px] font-semibold px-4 py-2.5 rounded-lg transition">
+        Timestamp Intellectual Property →
+      </a>
+    </div>
+  </main>
+
+  <!-- Crisp SaaS Footer -->
+  <footer class="border-t border-slate-200 bg-white py-7 px-4 sm:px-6 text-[11.5px] text-slate-500">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <img src="/logo.png" alt="HashPaper" width="16" height="16" class="w-4 h-4 object-contain" />
+        <span><strong class="text-slate-800">HashPaper</strong> • A <span class="text-slate-700 font-medium">Your Legal Indian</span> / MDM Global Holdings Initiative, Bengaluru.</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-4 font-medium text-slate-600">
+        <a href="/" class="hover:text-[#0B3D91]">Timestamp IP</a>
+        <a href="/verify.html" class="hover:text-[#0B3D91]">Verify Ledger</a>
+        <a href="/law.html" class="hover:text-[#0B3D91]">BSA §63 Law</a>
+        <a href="/terms.html" class="hover:text-[#0B3D91]">Terms</a>
+        <a href="/privacy.html" class="hover:text-[#0B3D91]">Privacy</a>
+        <a href="/contact.html" class="hover:text-[#0B3D91]">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
