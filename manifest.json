@@ -1,0 +1,23 @@
+{
+  "name": "HashPaper — Cryptographic IP Priority Registry",
+  "short_name": "HashPaper",
+  "description": "Zero-knowledge SHA-256 cryptographic priority timestamping aligned with Section 63 of the Bharatiya Sakshya Adhiniyam (BSA), 2023.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0B3D91",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
